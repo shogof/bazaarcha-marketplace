@@ -462,3 +462,65 @@ document.querySelectorAll(".tab-btn").forEach((btn) => {
 document.getElementById("prevArrow")?.addEventListener("click", prevPage);
 document.getElementById("nextArrow")?.addEventListener("click", nextPage);
 
+// ========== TOAST FUNCTION ==========
+const toast = document.getElementById("toastMsg");
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.style.opacity = "1";
+  setTimeout(() => {
+    toast.style.opacity = "0";
+  }, 3000);
+}
+
+function initializeProduct(id, name) {
+  showToast(`✅ "${name}" is now initialized for sale on Bazaarcha!`);
+}
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("init-btn")) {
+    const id = parseInt(e.target.getAttribute("data-id"));
+    const name = e.target.getAttribute("data-name");
+    initializeProduct(id, name);
+  }
+});
+
+// ========== HERO SLIDESHOW ==========
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+const dotsContainer = document.getElementById("dots");
+
+if (slides.length > 0 && dotsContainer) {
+  slides.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function goToSlide(index) {
+    slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
+    currentSlide = index;
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+  }
+
+  function nextAutoSlide() {
+    let next = (currentSlide + 1) % slides.length;
+    goToSlide(next);
+  }
+
+  let autoSlideInterval = setInterval(nextAutoSlide, 2000);
+
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    hero.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
+    hero.addEventListener("mouseleave", () => {
+      autoSlideInterval = setInterval(nextAutoSlide, 5000);
+    });
+  }
+}
