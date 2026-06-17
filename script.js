@@ -325,3 +325,57 @@ const translations = {
   },
 };
 
+let currentLang = "en";
+
+function switchLanguage(lang) {
+  currentLang = lang;
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+
+  document.querySelectorAll("[data-key]").forEach((el) => {
+    const key = el.dataset.key;
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  renderProducts();
+
+  document.querySelectorAll(".init-btn").forEach((btn) => {
+    const productName = btn.dataset.name;
+    btn.textContent = translations[lang].initBtn;
+    btn.dataset.name = productName;
+  });
+
+  const placeholders = {
+    contactName: { en: "Your Name", prs: "نام شما", ps: "ستا نوم" },
+    contactEmail: { en: "Your Email", prs: "ایمیل شما", ps: "ستا بریښنالیک" },
+    productName: {
+      en: "Product name you are interested in",
+      prs: "نام محصولی که به آن علاقه دارید",
+      ps: "د محصول نوم چې تاسو یې علاقه لرئ",
+    },
+    contactMessage: {
+      en: "Your Message (optional)",
+      prs: "پیام شما (اختیاری)",
+      ps: "ستا پیغام (اختیاري)",
+    },
+  };
+
+  Object.keys(placeholders).forEach((id) => {
+    const el = document.getElementById(id);
+    if (el && placeholders[id][lang]) {
+      el.placeholder = placeholders[id][lang];
+    }
+  });
+}
+
+document.querySelectorAll(".lang-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;
+    switchLanguage(lang);
+  });
+});
+
