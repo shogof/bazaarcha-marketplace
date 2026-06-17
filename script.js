@@ -557,3 +557,24 @@ if (contactForm) {
     contactForm.reset();
   });
 }
+
+// ========== SOCIAL MEDIA LINKS ==========
+document.getElementById("fbLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.open("https://facebook.com/yourpage", "_blank");
+});
+document.getElementById("igLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.open("https://instagram.com/yourpage", "_blank");
+});
+document.getElementById("telegramLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.open("https://t.me/yourchannel", "_blank");
+});
+document.getElementById("whatsappLink")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.open("https://wa.me/1234567890", "_blank");
+});
+
+// ========== INITIAL RENDER ==========
+renderProducts();
