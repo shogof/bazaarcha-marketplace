@@ -464,3 +464,27 @@ body {
 .contact-form button:hover {
   background: #0a5591;
 }
+
+/* ========== FOOTER ========== */
+.footer {
+  background: #1a1a2e;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+}
+
+/* ========== TOAST ========== */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0d6cb9;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 2000;
+  font-size: 0.9rem;
+}
