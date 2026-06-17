@@ -536,3 +536,24 @@ document.querySelectorAll(".nav-link").forEach((link) => {
     }
   });
 });
+
+// ========== CONTACT FORM ==========
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("contactName").value;
+    const product = document.getElementById("productName").value;
+
+    if (product === "") {
+      showToast("❌ Please enter the product name you're interested in");
+      return;
+    }
+
+    showToast(
+      `📩 Thank you ${name}! We'll contact you about "${product}" soon.`
+    );
+    contactForm.reset();
+  });
+}
