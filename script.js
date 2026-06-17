@@ -379,3 +379,86 @@ document.querySelectorAll(".lang-btn").forEach((btn) => {
   });
 });
 
+// ========== PRODUCT RENDER FUNCTION ==========
+let currentCategory = "bag";
+let currentPage = 0;
+const itemsPerPage = 6;
+let totalPages = 1;
+
+function updateTotalPages() {
+  totalPages = Math.ceil(products[currentCategory].length / itemsPerPage);
+}
+
+function renderProducts() {
+  updateTotalPages();
+  const categoryProducts = products[currentCategory];
+  const start = currentPage * itemsPerPage;
+  const end = start + itemsPerPage;
+  const visibleProducts = categoryProducts.slice(start, end);
+
+  const gallery = document.getElementById("productGallery");
+  if (!gallery) return;
+
+  gallery.innerHTML = "";
+
+  visibleProducts.forEach((product) => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+              <div class="product-img">
+                  <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+              </div>
+              <div class="product-info">
+                  <div class="product-title">${product.name}</div>
+                  <div class="product-price">${product.price}</div>
+                  <button class="init-btn" data-id="${product.id}" data-name="${product.name}">${translations[currentLang].initBtn}</button>
+              </div>
+          `;
+    gallery.appendChild(card);
+  });
+
+  const prevArrow = document.getElementById("prevArrow");
+  const nextArrow = document.getElementById("nextArrow");
+  if (prevArrow) prevArrow.style.opacity = currentPage === 0 ? "0.4" : "1";
+  if (nextArrow)
+    nextArrow.style.opacity = currentPage === totalPages - 1 ? "0.4" : "1";
+}
+
+function nextPage() {
+  if (currentPage < totalPages - 1) {
+    currentPage++;
+    renderProducts();
+  }
+}
+
+function prevPage() {
+  if (currentPage > 0) {
+    currentPage--;
+    renderProducts();
+  }
+}
+
+function switchCategory(category) {
+  currentCategory = category;
+  currentPage = 0;
+  renderProducts();
+
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    if (btn.getAttribute("data-category") === category) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
+document.querySelectorAll(".tab-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const category = btn.getAttribute("data-category");
+    switchCategory(category);
+  });
+});
+
+document.getElementById("prevArrow")?.addEventListener("click", prevPage);
+document.getElementById("nextArrow")?.addEventListener("click", nextPage);
+
