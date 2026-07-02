@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bazaarcha – Afghan Girls' Handicraft</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+      <div class="logo">
+        <img src="Images/logo.png" alt="Bazaarcha Logo" id="logo-img" />
+      </div>
+      <nav class="nav">
+        <a href="#home" class="nav-link" data-key="navHome">Home</a>
+        <a href="#about" class="nav-link" data-key="navAbout">About</a>
+        <a href="#products" class="nav-link" data-key="navProducts">Products</a>
+        <a href="#contact" class="nav-link" data-key="navContact">Contact</a>
+      </nav>
+      <div class="language-selector">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="prs">دری</button>
+        <button class="lang-btn" data-lang="ps">پښتو</button>
+      </div>
+    </header>
+
+    <!-- ========== HERO SLIDESHOW ========== -->
+    <section id="home" class="hero">
+      <div class="slideshow-container">
+        <div class="slide fade active">
+          <div class="slide-bg slide-1"></div>
+          <div class="slide-content">
+            <h2 data-key="heroTitle1">Bazaarcha</h2>
+            <p data-key="heroSub1">Afghan Girls' Handicrafts</p>
+          </div>
+        </div>
+        <div class="slide fade">
+          <div class="slide-bg slide-2"></div>
+          <div class="slide-content">
+            <h2 data-key="heroTitle2">Leather & Bags</h2>
+            <p data-key="heroSub2">
+              Handwoven, embroidered, traditional designs
+            </p>
+          </div>
+        </div>
+        <div class="slide fade">
+          <div class="slide-bg slide-3"></div>
+          <div class="slide-content">
+            <h2 data-key="heroTitle3">Traditional Attire</h2>
+            <p data-key="heroSub3">Unique pieces, hand-stitched with love</p>
+          </div>
+        </div>
+        <div class="slide fade">
+          <div class="slide-bg slide-4"></div>
+          <div class="slide-content">
+            <h2 data-key="heroTitle4">Heritage Carpets</h2>
+            <p data-key="heroSub4">Traditional Afghan patterns</p>
+          </div>
+        </div>
+        <div class="slide fade">
+          <div class="slide-bg slide-5"></div>
+          <div class="slide-content">
+            <h2 data-key="heroTitle5">Decor & Foods</h2>
+            <p data-key="heroSub5">Painted dishes, dried fruits, and more</p>
+          </div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <h2 data-key="aboutTitle">About Bazaarcha</h2>
+        <p data-key="aboutP1">
+          Bazaarcha — meaning "little marketplace" in Dari — is a platform
+          created to celebrate and empower young Afghan women artisans. In a
+          country where opportunities for women are limited, Bazaarcha provides
+          a digital space where their talent, creativity, and hard work can
+          reach the world.
+        </p>
+        <p data-key="aboutP2">
+          Every product you see on Bazaarcha is handmade by an Afghan girl or
+          young woman. From the intricate knots of a traditional carpet to the
+          delicate embroidery on a Kuchi dress, from the hand-painted ceramic
+          dishes to original canvas paintings — each piece carries a story of
+          resilience, beauty, and heritage.
+        </p>
+        <p data-key="aboutP3">
+          When you purchase from Bazaarcha, you are not just buying a product.
+          You are supporting a young woman's dream, helping her gain financial
+          independence, and preserving Afghanistan's rich cultural traditions
+          for future generations.
+        </p>
+        <div class="craft-tags">
+          <span class="craft-tag" data-key="tag1">🧵 Leather & Bags</span>
+          <span class="craft-tag" data-key="tag2">👗 Traditional Attire</span>
+          <span class="craft-tag" data-key="tag3">🪑 Home Decor</span>
+          <span class="craft-tag" data-key="tag4">🍽️ Dry Fruits & Spices</span>
+          <span class="craft-tag" data-key="tag5">🪢 Heritage Carpets</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRODUCT SECTION ========== -->
+    <section id="products" class="products-section">
+      <h2 class="section-title" data-key="productsTitle">Our Collections</h2>
+      <p class="section-subtitle" data-key="productsSub">
+        Handmade by young Afghan women — each piece is unique
+      </p>
+
+      <div class="category-tabs">
+        <button class="tab-btn active" data-category="bag" data-key="catBag">
+          Leather & Bags
+        </button>
+        <button class="tab-btn" data-category="clothes" data-key="catClothes">
+          Traditional Attire
+        </button>
+        <button class="tab-btn" data-category="decoration" data-key="catDecor">
+          Home Decor
+        </button>
+        <button class="tab-btn" data-category="food" data-key="catFood">
+          Food Processing
+        </button>
+        <button class="tab-btn" data-category="carpet" data-key="catCarpet">
+          Heritage Carpets
+        </button>
+      </div>
+
+      <div class="gallery-container">
+        <button class="gallery-arrow prev-arrow" id="prevArrow">‹</button>
+        <div class="gallery-wrapper">
+          <div class="gallery-grid" id="productGallery"></div>
+        </div>
+        <button class="gallery-arrow next-arrow" id="nextArrow">›</button>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="contact-section">
+      <h2 class="section-title" data-key="contactTitle">Contact Us</h2>
+      <p class="section-subtitle" data-key="contactSub">
+        Interested in a product? Tell us which one!
+      </p>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3 data-key="contactGet">Get in Touch</h3>
+          <p><i class="fas fa-envelope"></i> bazaarcha21@gmail.com</p>
+          <p><i class="fas fa-phone"></i> +93 78 123 4567</p>
+          <p><i class="fas fa-location-dot"></i> Mazar-e-Sharif, Afghanistan</p>
+
+          <h3 style="margin-top: 1.5rem" data-key="contactFollow">Follow Us</h3>
+          <div class="social-icons">
+            <a
+              href="https://www.facebook.com/profile.php?id=61579811090225"
+              class="social-icon"
+              id="fbLink"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/bazaa.rcha/"
+              class="social-icon"
+              id="igLink"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="social-icon" id="telegramLink"
+              ><i class="fab fa-telegram"></i
+            ></a>
+            <a href="#" class="social-icon" id="whatsappLink"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <input
+            type="text"
+            id="contactName"
+            placeholder="Your Name"
+            required
+          />
+          <input
+            type="email"
+            id="contactEmail"
+            placeholder="Your Email"
+            required
+          />
+          <input
+            type="text"
+            id="productName"
+            placeholder="Product name you are interested in"
+            required
+          />
+          <textarea
+            id="contactMessage"
+            rows="3"
+            placeholder="Your Message (optional)"
+          ></textarea>
+          <button type="submit" data-key="contactBtn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <p data-key="footer1">
+        Bazaarcha — Empowering Afghan Girls Through Heritage Crafts
+      </p>
+      <p>
+        © 2026 | Acted |
+        <span data-key="footer2">Every purchase supports a young artisan</span>
+      </p>
+    </footer>
+
+    <div id="toastMsg" class="toast"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
